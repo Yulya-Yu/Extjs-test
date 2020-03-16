@@ -4,15 +4,25 @@ Ext.define('new_test.store.Personnel', {
     alias: 'store.personnel',
 
     fields: [
-        'name', 'email', 'phone'
+        'name', 'email', 'phone', 'size'
     ],
 
-    data: { items: [
-        { name: 'Jean Luc', email: "jeanluc.picard@enterprise.com", phone: "555-111-1111" },
-        { name: 'Worf',     email: "worf.moghsson@enterprise.com",  phone: "555-222-2222" },
-        { name: 'Deanna',   email: "deanna.troi@enterprise.com",    phone: "555-333-3333" },
-        { name: 'Data',     email: "mr.data@enterprise.com",        phone: "555-444-4444" }
-    ]},
+    data: {
+        items: [
+            { name: 'Член команды №1', email: "test@gmail.com", phone: "555-111-1111", size: "" },
+            { name: 'Член команды №2', email: "test@gmail.com", phone: "555-222-2222", size: "" },
+            { name: 'Член команды №3', email: "test@gmail.com", phone: "555-333-3333", size: "" },
+            { name: 'Член команды №4', email: "test@gmail.com", phone: "555-444-4444", size: "" }
+        ],
+        // dockedItems: [{
+        //     xtype: 'pagingtoolbar',
+        //     dock: 'bottom',
+        //     displayInfo: true,
+        //     beforePageText: 'Page',
+        //     afterPageText: 'of {0}',
+        //     displayMsg: 'Displaying {0} - {1} of {2}'
+        // }],
+    },
 
     proxy: {
         type: 'memory',

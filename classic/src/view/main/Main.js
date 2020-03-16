@@ -37,6 +37,7 @@ Ext.define('new_test.view.main.Main', {
             },
             flex: 0
         },
+
         iconCls: 'fa-th-list'
     },
 
