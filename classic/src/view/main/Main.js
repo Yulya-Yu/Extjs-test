@@ -12,7 +12,6 @@ Ext.define('new_test.view.main.Main', {
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
-
         'new_test.view.main.MainController',
         'new_test.view.main.MainModel',
         'new_test.view.main.List'
@@ -57,6 +56,7 @@ Ext.define('new_test.view.main.Main', {
             headerPosition: 'left'
         }
     },
+
 
     defaults: {
         bodyPadding: 20,

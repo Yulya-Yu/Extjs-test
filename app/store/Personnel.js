@@ -14,6 +14,7 @@ Ext.define('new_test.store.Personnel', {
             { name: 'Член команды №3', email: "test@gmail.com", phone: "555-333-3333", size: "" },
             { name: 'Член команды №4', email: "test@gmail.com", phone: "555-444-4444", size: "" }
         ],
+
         // dockedItems: [{
         //     xtype: 'pagingtoolbar',
         //     dock: 'bottom',
