@@ -8,12 +8,17 @@ Ext.define('new_test.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.main',
+    stores: ['Personnel'],
 
-    onItemSelected: function (sender, record) {
+    onDeleteAll: function() {
+
+    },
+
+    onItemSelected: function(sender, record) {
         Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     },
 
-    onConfirm: function (choice) {
+    onConfirm: function(choice) {
         if (choice === 'yes') {
             //
         }

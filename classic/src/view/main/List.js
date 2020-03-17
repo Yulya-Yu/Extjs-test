@@ -13,7 +13,8 @@ Ext.define('new_test.view.main.List', {
 
     plugins: [{
         ptype: 'cellediting',
-        clicksToEdit: 2
+        clicksToEdit: 2,
+        ptype: 'gridfilters',
     }],
 
     store: {
@@ -24,7 +25,11 @@ Ext.define('new_test.view.main.List', {
             text: 'DELETE ALL',
             scale: 'medium',
             align: 'top',
-            handler: function() {}
+            handler: function() {
+                let store = Ext.getStore('store.personnel')
+                store.removeAll();
+                console.log(Ext.getStore('store.personnel').count())
+            }
         }, {
             text: 'Remove ',
             scale: 'medium',
@@ -65,6 +70,7 @@ Ext.define('new_test.view.main.List', {
             handler: function() {}
         }
     ],
+    //added filters here (phone, size)
     columns: [{
             text: 'Name',
             dataIndex: 'name',
@@ -77,15 +83,22 @@ Ext.define('new_test.view.main.List', {
             text: 'Email',
             dataIndex: 'email',
             flex: 1,
+            vtype: 'email',
             editor: {
                 xtype: 'textfield',
                 allowBlank: false
             }
         },
         {
+
             text: 'Phone',
             dataIndex: 'phone',
             flex: 1,
+            filter: {
+                type: 'list',
+                options: ['555-111-1111', '555-222-2222', '555-333-3333', '555-444-4444']
+            },
+            inputMask: 111 - 111 - 1111,
             editor: {
                 xtype: 'textfield',
                 allowBlank: false
@@ -95,6 +108,10 @@ Ext.define('new_test.view.main.List', {
             text: 'Size',
             dataIndex: 'size',
             flex: 1,
+            filter: {
+                type: 'list',
+                options: ['small', 'medium', 'large']
+            },
             editor: {
                 xtype: 'textfield',
                 allowBlank: false
