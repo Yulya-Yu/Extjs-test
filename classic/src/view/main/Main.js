@@ -36,6 +36,9 @@ Ext.define('new_test.view.main.Main', {
             },
             flex: 0
         },
+        tbar: [
+            { xtype: 'button', text: 'Button 1' }
+        ],
 
         iconCls: 'fa-th-list'
     },

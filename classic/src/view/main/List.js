@@ -4,7 +4,6 @@
 Ext.define('new_test.view.main.List', {
     extend: 'Ext.grid.Panel',
     xtype: 'mainlist',
-
     requires: [
         'new_test.store.Personnel'
     ],
@@ -14,7 +13,10 @@ Ext.define('new_test.view.main.List', {
     plugins: [{
         ptype: 'cellediting',
         clicksToEdit: 2,
-        ptype: 'gridfilters',
+    }],
+
+    plugins: [{
+        ptype: 'gridfilters'
     }],
 
     store: {
@@ -25,15 +27,15 @@ Ext.define('new_test.view.main.List', {
             text: 'DELETE ALL',
             scale: 'medium',
             align: 'top',
-            handler: function() {
-                let store = Ext.getStore('store.personnel')
-                store.removeAll();
-                console.log(Ext.getStore('store.personnel').count())
-            }
+            // handler: 
         }, {
             text: 'Remove ',
             scale: 'medium',
-            handler: function() {}
+            handler: function(grid, rowIndex, colIndex) {
+                // let store = 'store.personnel';
+                grid.getStore().removeAt(rowIndex);
+                grid.getStore().sync();
+            },
         },
         {
             text: 'ADD',
@@ -110,16 +112,21 @@ Ext.define('new_test.view.main.List', {
             flex: 1,
             filter: {
                 type: 'list',
-                options: ['small', 'medium', 'large']
+                options: ['L', 'M']
             },
             editor: {
                 xtype: 'textfield',
                 allowBlank: false
+            },
+            renderer: function(value, metaData, record, rowIndex) {
+                metaData.tdCls = record.get('size') == "" ? "default-color" : record.get('size') == "L" ? "color-l" : "color-m";
+                return value;
             }
         }
     ],
 
     listeners: {
-        select: 'onItemSelected'
+        select: 'onItemSelected',
+        deleteRow: 'onDeleteRow'
     }
 });

@@ -6,7 +6,6 @@
  */
 Ext.define('new_test.view.main.MainController', {
     extend: 'Ext.app.ViewController',
-
     alias: 'controller.main',
     stores: ['Personnel'],
 
@@ -14,7 +13,7 @@ Ext.define('new_test.view.main.MainController', {
 
     },
 
-    onItemSelected: function(sender, record) {
+    onTitleClick: function(sender, record) {
         Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     },
 
@@ -22,5 +21,7 @@ Ext.define('new_test.view.main.MainController', {
         if (choice === 'yes') {
             //
         }
-    }
+    },
+
+
 });
