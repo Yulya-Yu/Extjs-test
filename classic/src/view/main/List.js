@@ -9,15 +9,22 @@ Ext.define('new_test.view.main.List', {
     ],
 
     title: 'Тестовое задание №1',
+    plugins: [
+        Ext.create('Ext.grid.plugin.CellEditing', {
+            clicksToEdit: 1
+        }),
+        Ext.create('Ext.grid.filters.Filters')
+    ],
 
-    plugins: [{
-        ptype: 'cellediting',
-        clicksToEdit: 2,
-    }],
+    // plugins: [{
+    //     ptype: 
+    //     'cellediting',
+    //     clicksToEdit: 2
+    // }],
 
-    plugins: [{
-        ptype: 'gridfilters'
-    }],
+    // plugins: [{
+    //     ptype: 'gridfilters'
+    // }],
 
     store: {
         type: 'personnel'
@@ -118,6 +125,7 @@ Ext.define('new_test.view.main.List', {
                 xtype: 'textfield',
                 allowBlank: false
             },
+            //добавила цвет клетки
             renderer: function(value, metaData, record, rowIndex) {
                 metaData.tdCls = record.get('size') == "" ? "default-color" : record.get('size') == "L" ? "color-l" : "color-m";
                 return value;
